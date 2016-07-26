@@ -1,0 +1,11 @@
+git config --global user.name "rahulbaruah"
+
+git config --global user.email "baruah.rahul.88@gmail.com"
+
+git add .
+
+git remote add origin https://github.com/rahulbaruah/exam.git
+
+git commit -m 'initial commit'
+
+git push origin master
