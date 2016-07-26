@@ -11,8 +11,30 @@
 6. git push origin master
 
 
-After your first push, you can simply type:
+create a new branch named "feature_x" and switch to it using
 
-7. git push
+7. git checkout -b feature_x
 
-when you want to update the remote repository in the future.
+switch back to master
+
+8. git checkout master
+
+and delete the branch again
+
+9. git branch -D feature_x
+
+a branch is not available to others unless you push the branch to your remote repository
+
+10. git push origin <branch>
+
+Delete remote branch
+
+11. git push origin --delete <branchName>
+
+12. git log
+
+13. git tag 1.0.0 1b2e1d63ff 
+
+the 1b2e1d63ff stands for the first 10 characters of the commit id you want to reference with your tag
+
+14. git push --tags
