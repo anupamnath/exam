@@ -1,0 +1,3 @@
+/*-------Rahul---------*/
+To customize Password reset function modify:
+laravel\vendor\laravel\framework\src\Illuminate\Foundation\Auth\ResetsPasswords.php

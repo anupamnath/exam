@@ -1,0 +1,32 @@
+<?php
+	$server="localhost";
+	$db_username="root";
+	$db_password="rh567rh";
+	$database="getdb";
+	if(isset($connection)){
+		if(!($connection)){
+			$connection = ($GLOBALS["___mysqli_ston"] = mysqli_connect($server,$db_username,$db_password,$database));
+			if (mysqli_connect_errno())
+		  {
+		  echo "Failed to connect to MySQL: " . mysqli_connect_error();
+		  }
+			mysqli_query($connection, "SET SESSION wait_timeout = 60");
+		}
+	} else{
+		$connection = ($GLOBALS["___mysqli_ston"] = mysqli_connect($server,$db_username,$db_password,$database));
+		if (mysqli_connect_errno())
+		  {
+		  echo "Failed to connect to MySQL: " . mysqli_connect_error();
+		  }
+		mysqli_query($connection, "SET SESSION wait_timeout = 60");
+	}
+	$product1='132';
+	$product2='118';
+	$product3='124';
+	$result=mysqli_query( $connection, "SELECT * FROM products WHERE (id='$product1' OR id='$product2' OR id='$product3') AND deactivate='0' AND del='0' ORDER BY FIELD(id, $product1,  $product2,  $product3)");
+	if(mysqli_num_rows($result)!=0){
+		while($resultarray=mysqli_fetch_array($result)){
+			 echo($resultarray['product_name'].'<br/>');
+		}
+	}
+?>
