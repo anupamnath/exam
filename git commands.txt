@@ -1,11 +1,18 @@
-git config --global user.name "rahulbaruah"
+1. git config --global user.name "rahulbaruah"
 
-git config --global user.email "baruah.rahul.88@gmail.com"
+2. git config --global user.email "baruah.rahul.88@gmail.com"
 
-git add .
+3. git add .
 
-git remote add origin https://github.com/rahulbaruah/exam.git
+4. git remote add origin https://github.com/rahulbaruah/exam.git
 
-git commit -m 'initial commit'
+5. git commit -m 'initial commit'
 
-git push origin master
+6. git push origin master
+
+
+After your first push, you can simply type:
+
+7. git push
+
+when you want to update the remote repository in the future.
