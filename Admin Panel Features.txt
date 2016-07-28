@@ -1,0 +1,24 @@
+/*---------------Admin Panel Urgent-------------------*/
+
+1) Student entry form
+
+Name:
+Email:
+Student ID:
+Password:
+Question Set: set_1 , set_2, set_3 <----- Radio button
+
+2) Question Entry Form
+
+Question Set: set_1 , set_2, set_3 <----- Radio button
+Question No:
+Section:
+Question:   <-------textarea (with text editor for image upload)
+Answer A:   <-------textarea (with text editor for image upload)
+Answer B:   <-------textarea (with text editor for image upload)
+Answer C:   <-------textarea (with text editor for image upload)
+Answer D:   <-------textarea (with text editor for image upload)
+
+
+
+
