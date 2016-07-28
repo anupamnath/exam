@@ -46,6 +46,10 @@ Route::post('/login', 'LoginController@DoLogin');
 
 Route::get('/guidelines', 'ExamController@ShowGuidelines');
 
+Route::get('/questions', function(){
+	return view('desktop.questions');
+});
 
+Route::get('/fetch_question_paper', 'ExamController@FetchQuestionPaper');
 
 

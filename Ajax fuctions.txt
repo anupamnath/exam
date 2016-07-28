@@ -1,0 +1,188 @@
+AJAX functions ( total 7 functions ),
+Please review and feedback for any modification.
+> form token is added for each AJAX request
+____________________________________________________________________________
+
+1.
+
+  > fetch_question_paper( object )
+
+  object =
+  {
+      "id" : "biraj_x@yahoo.com",
+      "token" : "n8S7dAsf46B5jf"
+  }
+
+  > return r_object
+
+  r_object =
+    {
+        "duration" : 120,             // ( in mins )
+        "time_remaining" : 78,        // ( in mins )
+        "current_question" : 23,      // ( or 0 )
+
+        "paper" :
+            {
+              "set" : 1
+              "section" :
+                {
+                    "name" : "Numerical Ability"
+                    "questions" :
+                      {
+                          1:
+                            {
+                              "Q": "Is this a question ? ",
+                              "A": "Yes",
+                              "B": "No",
+                              "C": "Maybe",
+                              "D": "None of these",
+
+                              "answered" : TRUE / FALSE,
+                              "marked" : TRUE / FALSE,    // marked for review
+                            },
+
+                          2:
+                            {
+                              "Q": "Is this a question ? ",
+                              "A": "Yes",
+                              "B": "No",
+                              "C": "Maybe",
+                              "D": "None of these",
+
+                              "answered" : TRUE / FALSE,
+                              "marked" : TRUE / FALSE,      // marked for review
+                            },
+                          ...
+                          ...
+                          ...
+                      }
+              },
+
+              {
+                  "name" : "Mental Ability",
+
+                  "questions" :
+                      {
+                          21:
+                            {
+                              "Q": "Is this a question ? ",
+                              "A": "Yes",
+                              "B": "No",
+                              "C": "Maybe",
+                              "D": "None of these",
+
+                              "answered" : TRUE / FALSE,
+                              "marked" : TRUE / FALSE,      // marked for review
+                            },
+
+                          22:
+                            {
+                              "Q": "Is this a question ? ",
+                              "A": "Yes",
+                              "B": "No",
+                              "C": "Maybe",
+                              "D": "None of these",
+
+                              "answered" : TRUE / FALSE,
+                              "marked" : TRUE / FALSE,      // marked for review
+                            },
+                            ...
+                            ...
+                            ...
+                      }
+                },
+                ...
+                ...
+                ...
+            }
+        }
+____________________________________________________________________________
+
+2.
+
+    > update_answer( object )
+
+    object =
+    {
+        "id" : "biraj_x@yahoo.com",
+        "question_no" : 12,
+        "answer" : "A",
+        "token" : "n8S7dAsf46B5jf"
+    }
+
+    > return TRUE or FALSE
+
+____________________________________________________________________________
+
+3.
+
+    > clear_answer( object )
+
+    object =
+    {
+        "id" : "biraj_x@yahoo.com",
+        "question_no" : 12,
+        "token" : "n8S7dAsf46B5jf"
+    }
+
+    > return TRUE or FALSE
+____________________________________________________________________________
+
+4.
+
+    > mark_question( object )     // mark question for review
+
+    object =
+    {
+        "id" : "biraj_x@yahoo.com",
+        "question_no" : 12,
+        "token" : "n8S7dAsf46B5jf"
+    }
+
+    > return TRUE or FALSE
+
+____________________________________________________________________________
+
+5.
+
+    > current_question( object )
+
+    object =
+    {
+        "id" : "biraj_x@yahoo.com",
+        "question_no" : 12,
+        "token" : "n8S7dAsf46B5jf"
+    }
+
+    > return TRUE or FALSE
+
+____________________________________________________________________________
+
+6.
+
+    > update_time( object )
+
+    object =
+    {
+        "id" : "biraj_x@yahoo.com",
+        "time_remaining" : 47,     // ( in mins )
+        "token" : "n8S7dAsf46B5jf"
+    }
+
+    > return TRUE or FALSE
+
+____________________________________________________________________________
+
+7.
+
+    > end_exam( object )
+
+    object =
+    {
+        "id" : "biraj_x@yahoo.com",
+        "token" : "n8S7dAsf46B5jf"
+    }
+
+    > return TRUE or FALSE
+
+____________________________________________________________________________

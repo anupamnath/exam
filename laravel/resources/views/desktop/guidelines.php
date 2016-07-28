@@ -7,7 +7,7 @@
 		<br/>
 		Question Set: <?php echo($set); ?>
 	</p>
-	<a href="">Start Exam</a>
+	<a href="/questions">Start Exam</a>
 	<a href="/logout">Logout</a>
 	
 </body>

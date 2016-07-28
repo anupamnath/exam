@@ -16,7 +16,6 @@ class CreateStudentsColumn extends Migration {
 		{
 			$table->string('uid')->unique();
 			$table->string('type');
-			$table->string('set');
 		});
 	}
 

@@ -2,7 +2,7 @@
 
 2. git config --global user.email "baruah.rahul.88@gmail.com"
 
-3. git add .
+3. git add -A    "is equivalent to"   git add .; git add -u.
 
 4. git remote add origin https://github.com/rahulbaruah/exam.git
 
@@ -38,3 +38,7 @@ Delete remote branch
 the 1b2e1d63ff stands for the first 10 characters of the commit id you want to reference with your tag
 
 14. git push --tags
+
+15. git config --global core.autocrlf true 
+
+Git can handle this by auto-converting CRLF line endings into LF when you add a file to the index, and vice versa when it checks out code onto your filesystem. You can turn on this functionality with the core.autocrlf setting. If you’re on a Windows machine, set it to true – this converts LF endings into CRLF when you check out code:

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jul 26, 2016 at 12:00 PM
+-- Generation Time: Jul 28, 2016 at 06:56 AM
 -- Server version: 5.5.25a
 -- PHP Version: 5.4.4
 
@@ -23,6 +23,81 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `answers`
+--
+
+CREATE TABLE IF NOT EXISTS `answers` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `student_id` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `q1` varchar(1) COLLATE utf8_unicode_ci NOT NULL,
+  `q2` varchar(1) COLLATE utf8_unicode_ci NOT NULL,
+  `q3` varchar(1) COLLATE utf8_unicode_ci NOT NULL,
+  `q4` varchar(1) COLLATE utf8_unicode_ci NOT NULL,
+  `q5` varchar(1) COLLATE utf8_unicode_ci NOT NULL,
+  `q6` varchar(1) COLLATE utf8_unicode_ci NOT NULL,
+  `q7` varchar(1) COLLATE utf8_unicode_ci NOT NULL,
+  `q8` varchar(1) COLLATE utf8_unicode_ci NOT NULL,
+  `q9` varchar(1) COLLATE utf8_unicode_ci NOT NULL,
+  `q10` varchar(1) COLLATE utf8_unicode_ci NOT NULL,
+  `q11` varchar(1) COLLATE utf8_unicode_ci NOT NULL,
+  `q12` varchar(1) COLLATE utf8_unicode_ci NOT NULL,
+  `q13` varchar(1) COLLATE utf8_unicode_ci NOT NULL,
+  `q14` varchar(1) COLLATE utf8_unicode_ci NOT NULL,
+  `q15` varchar(1) COLLATE utf8_unicode_ci NOT NULL,
+  `q16` varchar(1) COLLATE utf8_unicode_ci NOT NULL,
+  `q17` varchar(1) COLLATE utf8_unicode_ci NOT NULL,
+  `q18` varchar(1) COLLATE utf8_unicode_ci NOT NULL,
+  `q19` varchar(1) COLLATE utf8_unicode_ci NOT NULL,
+  `q20` varchar(1) COLLATE utf8_unicode_ci NOT NULL,
+  `q21` varchar(1) COLLATE utf8_unicode_ci NOT NULL,
+  `q22` varchar(1) COLLATE utf8_unicode_ci NOT NULL,
+  `q23` varchar(1) COLLATE utf8_unicode_ci NOT NULL,
+  `q24` varchar(1) COLLATE utf8_unicode_ci NOT NULL,
+  `q25` varchar(1) COLLATE utf8_unicode_ci NOT NULL,
+  `q26` varchar(1) COLLATE utf8_unicode_ci NOT NULL,
+  `q27` varchar(1) COLLATE utf8_unicode_ci NOT NULL,
+  `q28` varchar(1) COLLATE utf8_unicode_ci NOT NULL,
+  `q29` varchar(1) COLLATE utf8_unicode_ci NOT NULL,
+  `q30` varchar(1) COLLATE utf8_unicode_ci NOT NULL,
+  `q31` varchar(1) COLLATE utf8_unicode_ci NOT NULL,
+  `q32` varchar(1) COLLATE utf8_unicode_ci NOT NULL,
+  `q33` varchar(1) COLLATE utf8_unicode_ci NOT NULL,
+  `q34` varchar(1) COLLATE utf8_unicode_ci NOT NULL,
+  `q35` varchar(1) COLLATE utf8_unicode_ci NOT NULL,
+  `q36` varchar(1) COLLATE utf8_unicode_ci NOT NULL,
+  `q37` varchar(1) COLLATE utf8_unicode_ci NOT NULL,
+  `q38` varchar(1) COLLATE utf8_unicode_ci NOT NULL,
+  `q39` varchar(1) COLLATE utf8_unicode_ci NOT NULL,
+  `q40` varchar(1) COLLATE utf8_unicode_ci NOT NULL,
+  `q41` varchar(1) COLLATE utf8_unicode_ci NOT NULL,
+  `q42` varchar(1) COLLATE utf8_unicode_ci NOT NULL,
+  `q43` varchar(1) COLLATE utf8_unicode_ci NOT NULL,
+  `q44` varchar(1) COLLATE utf8_unicode_ci NOT NULL,
+  `q45` varchar(1) COLLATE utf8_unicode_ci NOT NULL,
+  `q46` varchar(1) COLLATE utf8_unicode_ci NOT NULL,
+  `q47` varchar(1) COLLATE utf8_unicode_ci NOT NULL,
+  `q48` varchar(1) COLLATE utf8_unicode_ci NOT NULL,
+  `q49` varchar(1) COLLATE utf8_unicode_ci NOT NULL,
+  `q50` varchar(1) COLLATE utf8_unicode_ci NOT NULL,
+  `q51` varchar(1) COLLATE utf8_unicode_ci NOT NULL,
+  `q52` varchar(1) COLLATE utf8_unicode_ci NOT NULL,
+  `q53` varchar(1) COLLATE utf8_unicode_ci NOT NULL,
+  `q54` varchar(1) COLLATE utf8_unicode_ci NOT NULL,
+  `q55` varchar(1) COLLATE utf8_unicode_ci NOT NULL,
+  `q56` varchar(1) COLLATE utf8_unicode_ci NOT NULL,
+  `q57` varchar(1) COLLATE utf8_unicode_ci NOT NULL,
+  `q58` varchar(1) COLLATE utf8_unicode_ci NOT NULL,
+  `q59` varchar(1) COLLATE utf8_unicode_ci NOT NULL,
+  `q60` varchar(1) COLLATE utf8_unicode_ci NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `answers_student_id_unique` (`student_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `cache`
 --
 
@@ -32,6 +107,98 @@ CREATE TABLE IF NOT EXISTS `cache` (
   `expiration` int(11) NOT NULL,
   UNIQUE KEY `cache_key_unique` (`key`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `exam_details`
+--
+
+CREATE TABLE IF NOT EXISTS `exam_details` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `exam_name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `duration_in_mins` int(11) NOT NULL,
+  `set` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `questions_per_set` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `marked`
+--
+
+CREATE TABLE IF NOT EXISTS `marked` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `student_id` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `q1` tinyint(4) NOT NULL,
+  `q2` tinyint(4) NOT NULL,
+  `q3` tinyint(4) NOT NULL,
+  `q4` tinyint(4) NOT NULL,
+  `q5` tinyint(4) NOT NULL,
+  `q6` tinyint(4) NOT NULL,
+  `q7` tinyint(4) NOT NULL,
+  `q8` tinyint(4) NOT NULL,
+  `q9` tinyint(4) NOT NULL,
+  `q10` tinyint(4) NOT NULL,
+  `q11` tinyint(4) NOT NULL,
+  `q12` tinyint(4) NOT NULL,
+  `q13` tinyint(4) NOT NULL,
+  `q14` tinyint(4) NOT NULL,
+  `q15` tinyint(4) NOT NULL,
+  `q16` tinyint(4) NOT NULL,
+  `q17` tinyint(4) NOT NULL,
+  `q18` tinyint(4) NOT NULL,
+  `q19` tinyint(4) NOT NULL,
+  `q20` tinyint(4) NOT NULL,
+  `q21` tinyint(4) NOT NULL,
+  `q22` tinyint(4) NOT NULL,
+  `q23` tinyint(4) NOT NULL,
+  `q24` tinyint(4) NOT NULL,
+  `q25` tinyint(4) NOT NULL,
+  `q26` tinyint(4) NOT NULL,
+  `q27` tinyint(4) NOT NULL,
+  `q28` tinyint(4) NOT NULL,
+  `q29` tinyint(4) NOT NULL,
+  `q30` tinyint(4) NOT NULL,
+  `q31` tinyint(4) NOT NULL,
+  `q32` tinyint(4) NOT NULL,
+  `q33` tinyint(4) NOT NULL,
+  `q34` tinyint(4) NOT NULL,
+  `q35` tinyint(4) NOT NULL,
+  `q36` tinyint(4) NOT NULL,
+  `q37` tinyint(4) NOT NULL,
+  `q38` tinyint(4) NOT NULL,
+  `q39` tinyint(4) NOT NULL,
+  `q40` tinyint(4) NOT NULL,
+  `q41` tinyint(4) NOT NULL,
+  `q42` tinyint(4) NOT NULL,
+  `q43` tinyint(4) NOT NULL,
+  `q44` tinyint(4) NOT NULL,
+  `q45` tinyint(4) NOT NULL,
+  `q46` tinyint(4) NOT NULL,
+  `q47` tinyint(4) NOT NULL,
+  `q48` tinyint(4) NOT NULL,
+  `q49` tinyint(4) NOT NULL,
+  `q50` tinyint(4) NOT NULL,
+  `q51` tinyint(4) NOT NULL,
+  `q52` tinyint(4) NOT NULL,
+  `q53` tinyint(4) NOT NULL,
+  `q54` tinyint(4) NOT NULL,
+  `q55` tinyint(4) NOT NULL,
+  `q56` tinyint(4) NOT NULL,
+  `q57` tinyint(4) NOT NULL,
+  `q58` tinyint(4) NOT NULL,
+  `q59` tinyint(4) NOT NULL,
+  `q60` tinyint(4) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `marked_student_id_unique` (`student_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -56,7 +223,11 @@ INSERT INTO `migrations` (`migration`, `batch`) VALUES
 ('2016_07_20_123435_create_set_1', 1),
 ('2016_07_20_123903_create_set_2', 1),
 ('2016_07_20_123911_create_set_3', 1),
-('2016_07_25_110723_create_students_column', 2);
+('2016_07_25_110723_create_students_column', 1),
+('2016_07_27_051926_create_answers_table', 1),
+('2016_07_27_053316_create_marked_table', 1),
+('2016_07_27_060002_create_exam_details_table', 1),
+('2016_07_27_060030_create_student_status_table', 1);
 
 -- --------------------------------------------------------
 
@@ -93,16 +264,28 @@ CREATE TABLE IF NOT EXISTS `sessions` (
 
 CREATE TABLE IF NOT EXISTS `set_1` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `question_no` int(11) NOT NULL,
   `question` text COLLATE utf8_unicode_ci NOT NULL,
-  `option_1` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `option_2` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `option_3` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `option_4` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `section` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `a` text COLLATE utf8_unicode_ci NOT NULL,
+  `b` text COLLATE utf8_unicode_ci NOT NULL,
+  `c` text COLLATE utf8_unicode_ci NOT NULL,
+  `d` text COLLATE utf8_unicode_ci NOT NULL,
   `correct_option` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `set_1_question_no_unique` (`question_no`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=4 ;
+
+--
+-- Dumping data for table `set_1`
+--
+
+INSERT INTO `set_1` (`id`, `question_no`, `question`, `section`, `a`, `b`, `c`, `d`, `correct_option`, `created_at`, `updated_at`) VALUES
+(1, 1, 'Ten years ago, P was half of Q''s age. If the ratio of their present ages is 3:4, what will be the total of their present ages?', 'age', '45', '40', '35', '30', 'c', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(2, 2, 'Test question 2?', 'typeA', '23', '76', '11', '45', 'a', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(3, 3, 'Test question 3?', 'typeB', 'aaa', 'bbb', 'ccc', 'ddd', 'd', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -112,16 +295,28 @@ CREATE TABLE IF NOT EXISTS `set_1` (
 
 CREATE TABLE IF NOT EXISTS `set_2` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `question_no` int(11) NOT NULL,
   `question` text COLLATE utf8_unicode_ci NOT NULL,
-  `option_1` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `option_2` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `option_3` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `option_4` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `section` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `a` text COLLATE utf8_unicode_ci NOT NULL,
+  `b` text COLLATE utf8_unicode_ci NOT NULL,
+  `c` text COLLATE utf8_unicode_ci NOT NULL,
+  `d` text COLLATE utf8_unicode_ci NOT NULL,
   `correct_option` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `set_2_question_no_unique` (`question_no`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=4 ;
+
+--
+-- Dumping data for table `set_2`
+--
+
+INSERT INTO `set_2` (`id`, `question_no`, `question`, `section`, `a`, `b`, `c`, `d`, `correct_option`, `created_at`, `updated_at`) VALUES
+(1, 1, 'Father is aged three times more than his son Sunil. After 8 years, he would be two and a half times of Sunil''s age. After further 8 years, how many times would he be of Sunil''s age?', 'age', '4 times', '5 times', '2 times', '3 times', 'c', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(2, 2, 'Test question 5?', 'typeA', '23', '76', '11', '45', 'a', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(3, 3, 'Test question 6?', 'typeB', 'aaa', 'bbb', 'ccc', 'ddd', 'd', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -131,16 +326,57 @@ CREATE TABLE IF NOT EXISTS `set_2` (
 
 CREATE TABLE IF NOT EXISTS `set_3` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `question_no` int(11) NOT NULL,
   `question` text COLLATE utf8_unicode_ci NOT NULL,
-  `option_1` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `option_2` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `option_3` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `option_4` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `section` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `a` text COLLATE utf8_unicode_ci NOT NULL,
+  `b` text COLLATE utf8_unicode_ci NOT NULL,
+  `c` text COLLATE utf8_unicode_ci NOT NULL,
+  `d` text COLLATE utf8_unicode_ci NOT NULL,
   `correct_option` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `set_3_question_no_unique` (`question_no`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=4 ;
+
+--
+-- Dumping data for table `set_3`
+--
+
+INSERT INTO `set_3` (`id`, `question_no`, `question`, `section`, `a`, `b`, `c`, `d`, `correct_option`, `created_at`, `updated_at`) VALUES
+(1, 1, 'A man is 24 years older than his son. In two years, his age will be twice the age of his son. What is the present age of his son?', 'age', '23 years', '22 years', '21 years', '20 years', 'b', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(2, 2, 'Test question 7?', 'typeA', '23', '76', '11', '45', 'a', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(3, 3, 'Test question 8?', 'typeB', 'aaa', 'bbb', 'ccc', 'ddd', 'd', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `student_status`
+--
+
+CREATE TABLE IF NOT EXISTS `student_status` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `student_id` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `exam_id` int(11) NOT NULL,
+  `set` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `duration` int(11) NOT NULL,
+  `time_remaining` int(11) NOT NULL,
+  `current_question` int(11) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `student_status_student_id_unique` (`student_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=4 ;
+
+--
+-- Dumping data for table `student_status`
+--
+
+INSERT INTO `student_status` (`id`, `student_id`, `exam_id`, `set`, `duration`, `time_remaining`, `current_question`, `created_at`, `updated_at`) VALUES
+(1, 'std1', 1, 'set_1', 60, 60, 0, '2016-07-27 23:11:09', '2016-07-27 23:11:09'),
+(2, 'std2', 1, 'set_2', 60, 60, 0, '2016-07-27 23:11:09', '2016-07-27 23:11:09'),
+(3, 'std3', 1, 'set_3', 60, 60, 0, '2016-07-27 23:11:09', '2016-07-27 23:11:09');
 
 -- --------------------------------------------------------
 
@@ -158,7 +394,6 @@ CREATE TABLE IF NOT EXISTS `users` (
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `uid` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `type` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `set` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `users_email_unique` (`email`),
   UNIQUE KEY `users_uid_unique` (`uid`)
@@ -168,11 +403,11 @@ CREATE TABLE IF NOT EXISTS `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `email`, `password`, `remember_token`, `created_at`, `updated_at`, `uid`, `type`, `set`) VALUES
-(1, 'admin', 'admin@admin.com', '$2y$10$IctjQvdhhrHuEMr.SQ0ZauwkeEk07deROf.UZ2HYpgQV1jHo6oACW', NULL, '2016-07-25 06:06:30', '2016-07-25 06:06:30', '', 'admin', ''),
-(2, 'student1', 'student1@test.com', '$2y$10$Y9DXmHfBvwcDiXBR9bfH3emXK/Xi6Pg6I.gHliiZIlSDD1j1BekWa', NULL, '2016-07-25 06:06:30', '2016-07-25 06:06:30', 'std1', 'student', 'set1'),
-(3, 'student2', 'student2@test.com', '$2y$10$RGhWHx1GyBmQqPLdVor1se8esAJ.X.y10PxygT3L1iBVluDlqxYQ.', NULL, '2016-07-25 06:06:30', '2016-07-25 06:06:30', 'std2', 'student', 'set2'),
-(4, 'student3', 'student3@test.com', '$2y$10$Ns5HzlQokHJ0gdc1wH303.XOfZoqslG2fWw0fdlQAI7srCEmjHU5i', NULL, '2016-07-25 06:06:30', '2016-07-25 06:06:30', 'std3', 'student', 'set3');
+INSERT INTO `users` (`id`, `name`, `email`, `password`, `remember_token`, `created_at`, `updated_at`, `uid`, `type`) VALUES
+(1, 'admin', 'admin@admin.com', '$2y$10$mNDZcbhqhhi5AbLDKipRqe..UXVKxVNL4ayXdUSB2WU6rdSx8jJfS', NULL, '2016-07-27 23:11:07', '2016-07-27 23:11:07', '', 'admin'),
+(2, 'student1', 'student1@test.com', '$2y$10$X8VS0qDzou2mOhzmqibytepb0Dp22ThdrmXsph4xprc1kJXEn6hiO', NULL, '2016-07-27 23:11:07', '2016-07-27 23:11:07', 'std1', 'student'),
+(3, 'student2', 'student2@test.com', '$2y$10$F9YiGFXBiwBW5CcPbTBZEuCwxwggjxXTCBNMQ3iLjqLGF8NiEIpe2', NULL, '2016-07-27 23:11:08', '2016-07-27 23:11:08', 'std2', 'student'),
+(4, 'student3', 'student3@test.com', '$2y$10$PyJ2Gu0JORZYKLswZmZkde/M4PR0l8hitp9Mrqg6IRLhf6la0FNbC', NULL, '2016-07-27 23:11:09', '2016-07-27 23:11:09', 'std3', 'student');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

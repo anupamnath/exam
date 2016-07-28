@@ -14,11 +14,13 @@ class CreateSet3 extends Migration {
 	{
 		Schema::create('set_3', function (Blueprint $table) {
             $table->increments('id');
+			$table->integer('question_no')->unique();
             $table->text('question');
-            $table->string('option_1');
-			$table->string('option_2');
-			$table->string('option_3');
-			$table->string('option_4');
+			$table->string('section');
+            $table->text('a');
+			$table->text('b');
+			$table->text('c');
+			$table->text('d');
             $table->string('correct_option');
             $table->timestamps();
         });
