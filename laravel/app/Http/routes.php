@@ -52,4 +52,10 @@ Route::get('/questions', function(){
 
 Route::get('/fetch_question_paper', 'ExamController@FetchQuestionPaper');
 
+Route::get('/update_answer', 'ExamController@UpdateAnswer');
 
+Route::get('/clear_answer', 'ExamController@ClearAnswer');
+
+Route::get('/mark_question', 'ExamController@MarkQuestion');
+
+Route::get('/current_question', 'ExamController@CurrentQuestion');

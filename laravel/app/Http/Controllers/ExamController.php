@@ -1,5 +1,6 @@
 <?php
 namespace App\Http\Controllers;
+use Illuminate\Http\Request;
 use Auth;
 use DB;
 use App\User;
@@ -37,25 +38,24 @@ class ExamController extends Controller
 			$markedQuery = Marked::where('student_id', $user->uid)
 					->first([$question_col]);
 			
+			$marked = false;
 			if($markedQuery){
 				if($markedQuery->$question_col == 1){
 					$marked = true;
-				}				
-			} else{
-				$marked = false;
+				}
 			}
 			$questions[$key]->marked = $marked;
 			
 			/*----------------answered-----------------------*/
-			$answeredQuery = Marked::where('student_id', $user->uid)
+			$answeredQuery = Answers::where('student_id', $user->uid)
 					->first([$question_col]);
+			
+			$answered = false;
 			if($answeredQuery){
 				if($answeredQuery->$question_col){
 					$answered = $answeredQuery->$question_col;
 				}				
-			} else{
-				$answered = false;
-			}	
+			}
 			$questions[$key]->answered = $answered;		
 			
 		}
@@ -63,5 +63,70 @@ class ExamController extends Controller
 		$data = ['duration' => $duration, 'time_remaining' => $time_remaining, 'current_question' => $current_question, 'set' => $set, 'questions' => $questions];
 		
 		return response()->json($data);
+	}
+	
+	public function UpdateAnswer(Request $request)
+	{
+		$this->validate($request, [
+			 'question_no' => 'required'
+		]);
+		
+		$question_no = $request->input('question_no');
+		$answer = $request->input('answer');
+		
+		$question_col = 'q'.$question_no;
+		
+		$answers = Answers::firstOrCreate(['student_id' => Auth::user()->uid]);				
+		$answers->$question_col = $answer;
+		$answers->save();
+				
+		return response()->json(true);
+	}
+	
+	public function ClearAnswer(Request $request)
+	{
+		$this->validate($request, [
+			 'question_no' => 'required'
+		]);
+		
+		$question_no = $request->input('question_no');		
+		$question_col = 'q'.$question_no;
+		
+		$answers = Answers::firstOrCreate(['student_id' => Auth::user()->uid]);				
+		$answers->$question_col = null;
+		$answers->save();
+				
+		return response()->json(true);
+	}
+	
+	public function MarkQuestion(Request $request)
+	{
+		$this->validate($request, [
+			 'question_no' => 'required'
+		]);
+		
+		$question_no = $request->input('question_no');		
+		$question_col = 'q'.$question_no;
+		
+		$marked = Marked::firstOrCreate(['student_id' => Auth::user()->uid]);
+		$marked->$question_col = 1;
+		$marked->save();
+				
+		return response()->json(true);
+	}
+	
+	public function CurrentQuestion(Request $request)
+	{
+		$this->validate($request, [
+			 'question_no' => 'required'
+		]);
+		
+		$question_no = $request->input('question_no');
+		
+		$studentStatus = StudentStatus::where('student_id', Auth::user()->uid)->first();
+		$studentStatus->current_question = $question_no;
+		$studentStatus->save();
+		
+		return response()->json(true);
 	}
 }
