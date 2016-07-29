@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jul 28, 2016 at 06:56 AM
+-- Generation Time: Jul 29, 2016 at 08:51 AM
 -- Server version: 5.5.25a
 -- PHP Version: 5.4.4
 
@@ -117,13 +117,20 @@ CREATE TABLE IF NOT EXISTS `cache` (
 CREATE TABLE IF NOT EXISTS `exam_details` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `exam_name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `duration_in_mins` int(11) NOT NULL,
-  `set` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `duration` double(8,2) NOT NULL,
+  `sets` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `questions_per_set` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `exam_details`
+--
+
+INSERT INTO `exam_details` (`id`, `exam_name`, `duration`, `sets`, `questions_per_set`, `created_at`, `updated_at`) VALUES
+(1, 'Assam Down Town University Online Examination', 60.00, '3', '60', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -360,9 +367,10 @@ CREATE TABLE IF NOT EXISTS `student_status` (
   `student_id` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `exam_id` int(11) NOT NULL,
   `set` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `duration` int(11) NOT NULL,
-  `time_remaining` int(11) NOT NULL,
+  `time_remaining` double(8,2) NOT NULL,
   `current_question` int(11) NOT NULL,
+  `start_exam` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `end_exam` tinyint(4) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`id`),
@@ -373,10 +381,10 @@ CREATE TABLE IF NOT EXISTS `student_status` (
 -- Dumping data for table `student_status`
 --
 
-INSERT INTO `student_status` (`id`, `student_id`, `exam_id`, `set`, `duration`, `time_remaining`, `current_question`, `created_at`, `updated_at`) VALUES
-(1, 'std1', 1, 'set_1', 60, 60, 0, '2016-07-27 23:11:09', '2016-07-27 23:11:09'),
-(2, 'std2', 1, 'set_2', 60, 60, 0, '2016-07-27 23:11:09', '2016-07-27 23:11:09'),
-(3, 'std3', 1, 'set_3', 60, 60, 0, '2016-07-27 23:11:09', '2016-07-27 23:11:09');
+INSERT INTO `student_status` (`id`, `student_id`, `exam_id`, `set`, `time_remaining`, `current_question`, `start_exam`, `end_exam`, `created_at`, `updated_at`) VALUES
+(1, 'std1', 1, 'set_1', 60.00, 0, '0000-00-00 00:00:00', 0, '2016-07-29 01:21:14', '2016-07-29 01:21:14'),
+(2, 'std2', 1, 'set_2', 60.00, 0, '0000-00-00 00:00:00', 0, '2016-07-29 01:21:14', '2016-07-29 01:21:14'),
+(3, 'std3', 1, 'set_3', 60.00, 0, '0000-00-00 00:00:00', 0, '2016-07-29 01:21:14', '2016-07-29 01:21:14');
 
 -- --------------------------------------------------------
 
@@ -404,10 +412,10 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `remember_token`, `created_at`, `updated_at`, `uid`, `type`) VALUES
-(1, 'admin', 'admin@admin.com', '$2y$10$mNDZcbhqhhi5AbLDKipRqe..UXVKxVNL4ayXdUSB2WU6rdSx8jJfS', NULL, '2016-07-27 23:11:07', '2016-07-27 23:11:07', '', 'admin'),
-(2, 'student1', 'student1@test.com', '$2y$10$X8VS0qDzou2mOhzmqibytepb0Dp22ThdrmXsph4xprc1kJXEn6hiO', NULL, '2016-07-27 23:11:07', '2016-07-27 23:11:07', 'std1', 'student'),
-(3, 'student2', 'student2@test.com', '$2y$10$F9YiGFXBiwBW5CcPbTBZEuCwxwggjxXTCBNMQ3iLjqLGF8NiEIpe2', NULL, '2016-07-27 23:11:08', '2016-07-27 23:11:08', 'std2', 'student'),
-(4, 'student3', 'student3@test.com', '$2y$10$PyJ2Gu0JORZYKLswZmZkde/M4PR0l8hitp9Mrqg6IRLhf6la0FNbC', NULL, '2016-07-27 23:11:09', '2016-07-27 23:11:09', 'std3', 'student');
+(1, 'admin', 'admin@admin.com', '$2y$10$WeTbAasZzwRUL/lxpuL/U.2A.qoF68AfPggzUHnr2ZmcrsN3VvY..', NULL, '2016-07-29 01:21:14', '2016-07-29 01:21:14', '', 'admin'),
+(2, 'student1', 'student1@test.com', '$2y$10$vsW7FlElp8PekJ6YqDBXoeA49sXayQdGyxN7oeo9vKHvzxZyKcUre', NULL, '2016-07-29 01:21:14', '2016-07-29 01:21:14', 'std1', 'student'),
+(3, 'student2', 'student2@test.com', '$2y$10$Hisii/770CmAFhz54ejps.BoESmjiuPn3icMRr1xWcuUzktcwVMAi', NULL, '2016-07-29 01:21:14', '2016-07-29 01:21:14', 'std2', 'student'),
+(4, 'student3', 'student3@test.com', '$2y$10$QdQMCDBvCe/7s.up4r5AP.Yrq95SCcVZFRhqQyzqR9UdnCrSlmEYK', NULL, '2016-07-29 01:21:14', '2016-07-29 01:21:14', 'std3', 'student');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

@@ -15,8 +15,8 @@ class CreateExamDetailsTable extends Migration {
 		Schema::create('exam_details', function (Blueprint $table) {
             $table->increments('id');
             $table->string('exam_name');
-			$table->integer('duration_in_mins');
-			$table->string('set');
+			$table->float('duration');
+			$table->string('sets');
 			$table->string('questions_per_set');			
             $table->timestamps();
         });

@@ -59,3 +59,7 @@ Route::get('/clear_answer', 'ExamController@ClearAnswer');
 Route::get('/mark_question', 'ExamController@MarkQuestion');
 
 Route::get('/current_question', 'ExamController@CurrentQuestion');
+
+Route::get('/update_time', 'ExamController@UpdateTime');
+
+Route::get('/end_exam', 'ExamController@EndExam');

@@ -17,9 +17,10 @@ class CreateStudentStatusTable extends Migration {
             $table->string('student_id')->unique();
 			$table->integer('exam_id');
 			$table->string('set');
-			$table->integer('duration');
-			$table->integer('time_remaining');
+			$table->float('time_remaining');
 			$table->integer('current_question');
+			$table->timestamp('start_exam');
+			$table->tinyInteger('end_exam');
             $table->timestamps();
         });
 	}

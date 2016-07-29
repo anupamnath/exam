@@ -20,6 +20,8 @@ class DatabaseSeeder extends Seeder {
 		
 		$this->call('UserTableSeeder');
 		
+		$this->call('ExamTableSeeder');
+		
 		$this->call('SetTableSeeder');
 		
 		$this->call('StudentStatusTableSeeder');
@@ -86,6 +88,21 @@ class UserTableSeeder extends Seeder {
 
 }
 
+class ExamTableSeeder extends Seeder {
+
+    public function run()
+    {
+		DB::table('exam_details')->delete();
+		
+		DB::table('exam_details')->insert([
+			'exam_name' => 'Assam Down Town University Online Examination',
+			'duration' => 60,
+			'sets' => 3,
+			'questions_per_set' => 60
+		]);
+	}
+}
+
 class SetTableSeeder extends Seeder {
 
     public function run()
@@ -126,7 +143,6 @@ class StudentStatusTableSeeder extends Seeder {
 			'student_id' => 'std1',
 			'exam_id' => '1',
 			'set' => 'set_1',
-			'duration' => '60',
 			'time_remaining' => '60'
 		]);
 		
@@ -134,7 +150,6 @@ class StudentStatusTableSeeder extends Seeder {
 			'student_id' => 'std2',
 			'exam_id' => '1',
 			'set' => 'set_2',
-			'duration' => '60',
 			'time_remaining' => '60'
 		]);
 		
@@ -142,7 +157,6 @@ class StudentStatusTableSeeder extends Seeder {
 			'student_id' => 'std3',
 			'exam_id' => '1',
 			'set' => 'set_3',
-			'duration' => '60',
 			'time_remaining' => '60'
 		]);
 	}

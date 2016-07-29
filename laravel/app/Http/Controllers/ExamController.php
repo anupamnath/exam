@@ -13,6 +13,12 @@ class ExamController extends Controller
 	public function ShowGuidelines()
 	{
 		$user = Auth::user();
+		
+		$studentStatus = StudentStatus::where('student_id', $user->uid)->first();
+		if($studentStatus->end_exam){
+			return ('Sorry!. The exam has ended. <a href="/logout">Logout</a>');
+		}
+		
 		$data = ['name' => $user->name, 'set' => $user->set];
 		return view('desktop.guidelines')->with($data);
 	}
@@ -23,7 +29,10 @@ class ExamController extends Controller
 		
 		$studentStatus = StudentStatus::where('student_id', $user->uid)->first();
 		
-		$duration = $studentStatus->duration;
+		$exam_id = $studentStatus->exam_id;
+		$exam_details = DB::table('exam_details')->whereId($exam_id)->first();
+		$duration = $exam_details->duration;
+		
 		$time_remaining = $studentStatus->time_remaining;
 		$current_question = $studentStatus->current_question;
 		
@@ -125,6 +134,30 @@ class ExamController extends Controller
 		
 		$studentStatus = StudentStatus::where('student_id', Auth::user()->uid)->first();
 		$studentStatus->current_question = $question_no;
+		$studentStatus->save();
+		
+		return response()->json(true);
+	}
+	
+	public function UpdateTime(Request $request)
+	{
+		$this->validate($request, [
+			 'time_remaining' => 'required'
+		]);
+		
+		$time_remaining = $request->input('time_remaining');
+		
+		$studentStatus = StudentStatus::where('student_id', Auth::user()->uid)->first();
+		$studentStatus->time_remaining = $time_remaining;
+		$studentStatus->save();
+		
+		return response()->json(true);
+	}
+	
+	public function EndExam()
+	{
+		$studentStatus = StudentStatus::where('student_id', Auth::user()->uid)->first();
+		$studentStatus->end_exam = 1;
 		$studentStatus->save();
 		
 		return response()->json(true);
