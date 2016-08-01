@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Aug 01, 2016 at 03:46 PM
+-- Generation Time: Aug 01, 2016 at 05:42 PM
 -- Server version: 5.5.25a
 -- PHP Version: 5.4.4
 
@@ -314,7 +314,7 @@ CREATE TABLE IF NOT EXISTS `set_2` (
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`id`),
   UNIQUE KEY `set_2_question_no_unique` (`question_no`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=4 ;
 
 --
 -- Dumping data for table `set_2`
@@ -382,9 +382,9 @@ CREATE TABLE IF NOT EXISTS `student_status` (
 --
 
 INSERT INTO `student_status` (`id`, `student_id`, `exam_id`, `set`, `time_remaining`, `current_question`, `start_exam`, `end_exam`, `created_at`, `updated_at`) VALUES
-(1, 'std1', 1, 'set_1', 60.00, 0, '0000-00-00 00:00:00', 0, '2016-08-01 06:34:30', '2016-08-01 06:34:30'),
-(2, 'std2', 1, 'set_2', 60.00, 0, '0000-00-00 00:00:00', 0, '2016-08-01 06:34:30', '2016-08-01 06:34:30'),
-(3, 'std3', 1, 'set_3', 60.00, 0, '0000-00-00 00:00:00', 0, '2016-08-01 06:34:30', '2016-08-01 06:34:30');
+(1, 'std1', 1, 'set_1', 60.00, 0, '0000-00-00 00:00:00', 0, '2016-08-01 09:04:49', '2016-08-01 09:04:49'),
+(2, 'std2', 1, 'set_2', 60.00, 0, '0000-00-00 00:00:00', 0, '2016-08-01 09:04:49', '2016-08-01 09:04:49'),
+(3, 'std3', 1, 'set_3', 60.00, 0, '0000-00-00 00:00:00', 0, '2016-08-01 09:04:49', '2016-08-01 09:04:49');
 
 -- --------------------------------------------------------
 
@@ -411,10 +411,10 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `remember_token`, `created_at`, `updated_at`, `uid`, `type`) VALUES
-(1, 'admin', 'admin@admin.com', '$2y$10$a/yqu/AWMioE4Gt5vWgxS.LGL/Y3BpSMSrDVAZng6FSpakXITuOKi', 'Ty8MPFlKRLc6oBgC9TMICQZk9kGRYkaBC7vMXBysf3lrsE7i7E6QWPYKzNdX', '2016-08-01 06:34:29', '2016-08-01 06:46:47', '', 'admin'),
-(2, 'student1', 'student1@test.com', '$2y$10$8t54rSeYpxQt1Vh3C07m8.h0f/3XjKeLXhodgqgYOAy2ERR5k2DPu', NULL, '2016-08-01 06:34:29', '2016-08-01 06:34:29', 'std1', 'student'),
-(3, 'student2', 'student2@test.com', '$2y$10$mIex15qDYR9mfIjhvgpwn.akrlNUC/I2/Ace.Fd29D/W9JO/8B/SS', NULL, '2016-08-01 06:34:29', '2016-08-01 06:34:29', 'std2', 'student'),
-(4, 'student3', 'student3@test.com', '$2y$10$3xEUKyn0pC1pahptpUwx.Otng57gkiyxBxnDgJA6WiMq43EUuZqD.', NULL, '2016-08-01 06:34:29', '2016-08-01 06:34:29', 'std3', 'student');
+(1, 'admin', 'admin@admin.com', '$2y$10$wPz5doI3qbpXYcRJVtmAMu3HQ.MKJ80vNqDgWNlA1ye6XFPibrxqi', 'aGzL3szA1UlYd592AoOKUBoLVZgU8oygTKBTV0skjq2DgYRKexWSeppxjRJX', '2016-08-01 09:04:47', '2016-08-01 09:05:17', '', 'admin'),
+(2, 'student1', 'student1@test.com', '$2y$10$fW35XrEVm/Vb5oBf6LWB4OIeUPBreLrGpimYgAcoYEPMcalHAefrS', NULL, '2016-08-01 09:04:47', '2016-08-01 09:04:47', 'std1', 'student'),
+(3, 'student2', 'student2@test.com', '$2y$10$hqspB5uOTjsiyOQMT76QIuZTAO5MiGlbLpXK.G1l8pgJWpN2GLuau', NULL, '2016-08-01 09:04:48', '2016-08-01 09:04:48', 'std2', 'student'),
+(4, 'student3', 'student3@test.com', '$2y$10$iilyCZJC3vHpTYrBjLkrp.7kHeA7CnkHXLS3Z29Z0i/XMfC/sDvVG', NULL, '2016-08-01 09:04:48', '2016-08-01 09:04:48', 'std3', 'student');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
