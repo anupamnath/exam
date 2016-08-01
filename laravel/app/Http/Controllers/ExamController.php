@@ -98,7 +98,7 @@ class ExamController extends Controller
 			 'question_no' => 'required'
 		]);
 		
-		$question_no = $request->input('question_no');		
+		$question_no = $request->input('question_no');
 		$question_col = 'q'.$question_no;
 		
 		$answers = Answers::firstOrCreate(['student_id' => Auth::user()->uid]);				

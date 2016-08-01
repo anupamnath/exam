@@ -63,3 +63,33 @@ Route::get('/current_question', 'ExamController@CurrentQuestion');
 Route::get('/update_time', 'ExamController@UpdateTime');
 
 Route::get('/end_exam', 'ExamController@EndExam');
+
+Route::get('/admin', function(){
+	if(Auth::check()){
+		if(Auth::user()->type == 'admin'){
+			return view('admin.dashboard');
+		}
+	}
+	
+	return view('admin.login');
+});
+
+Route::post('/adminlogin', 'LoginController@AdminLogin');
+
+Route::get('/adminlogout', 'LoginController@AdminLogout');
+
+Route::get('/admin/addstudent', function(){
+	return view('admin.addstudent');
+});
+
+Route::post('/admin/addstudent', 'StudentController@AddStudent');
+
+Route::get('/admin/multistudents', function(){
+	return view('admin.multistudents');
+});
+
+Route::get('/admin/addquestion', function(){
+	return view('admin.addquestion');
+});
+
+Route::post('/admin/addquestion', 'QuestionController@AddQuestion');

@@ -14,7 +14,7 @@ class CreateStudentsColumn extends Migration {
 	{
 		Schema::table('users', function($table)
 		{
-			$table->string('uid')->unique();
+			$table->string('uid');
 			$table->string('type');
 		});
 	}

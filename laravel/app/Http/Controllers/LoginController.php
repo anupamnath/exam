@@ -46,4 +46,34 @@ class LoginController extends Controller
                 ]);
     }
 	
+	public function AdminLogin(Request $request)
+    {
+		$this->validate($request, [
+			'email' => 'required|email',
+			'password' => 'required'
+		]);
+		
+		$email = $request->input('email');
+		$password = $request->input('password');
+		$remember = $request->input('remember');
+				
+		if (Auth::attempt(['email' => $email, 'password' => $password, 'type' => 'admin'], $remember))
+		{
+			return redirect('/admin');
+		}
+		
+		return redirect('/admin')->withInput($request->only('email'))
+                ->withErrors([
+                    'error_msg' => 'Wrong Credentials'
+                ]);
+	}
+	
+	public function AdminLogout()
+	{
+		Session::flush();
+		Auth::logout();
+		
+		return redirect('/admin');
+	}
+	
 }
