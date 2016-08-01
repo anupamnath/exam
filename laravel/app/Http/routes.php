@@ -93,3 +93,18 @@ Route::get('/admin/addquestion', function(){
 });
 
 Route::post('/admin/addquestion', 'QuestionController@AddQuestion');
+
+Route::get('/excel', function(){
+	Excel::load('C:/OnlineExam/ischolar_registration.xls', function($reader) {
+
+		$reader->each(function($sheet) {
+
+			// Loop through all rows
+			$sheet->each(function($row) {
+				dd($row);
+			});
+
+		});
+
+	});
+});

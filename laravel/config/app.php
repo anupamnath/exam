@@ -146,8 +146,7 @@ return [
 		'App\Providers\RouteServiceProvider',
 		
 		/* more already here */
-		'Laravel\Socialite\SocialiteServiceProvider',
-		'hisorange\BrowserDetect\Provider\BrowserDetectService',
+		'Maatwebsite\Excel\ExcelServiceProvider',
 
 	],
 
@@ -196,8 +195,7 @@ return [
 		'URL'       => 'Illuminate\Support\Facades\URL',
 		'Validator' => 'Illuminate\Support\Facades\Validator',
 		'View'      => 'Illuminate\Support\Facades\View',
-		'Socialize' => 'Laravel\Socialite\Facades\Socialite',
-		'BrowserDetect' => 'hisorange\BrowserDetect\Facade\Parser',
+		'Excel' => 'Maatwebsite\Excel\Facades\Excel',
 
 	],
 
