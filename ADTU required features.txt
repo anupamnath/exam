@@ -1,0 +1,15 @@
+points to be  noted:
+1. Submit button after each question or auto select next question. Choose answer button color should be red.
+2. Marked question should be in blue color.
+3.There should be one navigation panel where all the questions number  will be listed along with the action taken by user. 
+4. Section wise questions should be in the navigation panel.
+5. In the instruction page browser auto detect option and "download latest version of your browser. Your browser is outdated."
+6. Last 10 minutes alarm-  popup notification.
+7. Instruction page should be one no scrolling. 
+8. there should not be any next after last question and no previous button before first question. 
+9. Disable browser so that user can not open new tab or minimize the browser. 
+10. what is the feature of MENU button?
+11. there should be a welcome page including ADTU lpgo.
+12. there should be one declaration page with one select button" I hereby read all the instructions and accept all terms and condition.
+13. Web cam feature?
+14. There must webcam testing option.

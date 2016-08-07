@@ -14,8 +14,7 @@ class QuestionController extends Controller
 			 'question_set' => 'required',
 			 'question_no' => 'required',
 			 'section' => 'required',
-			 'question' => 'required',
-			 'correct_option' => 'required'			
+			 'question' => 'required'
 		]);
 		
 		$question_set = $request->input('question_set');

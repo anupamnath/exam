@@ -4,11 +4,12 @@ use Auth;
 use Illuminate\Http\Request;
 use App\User;
 use App\StudentStatus;
+use Excel;
 
 class StudentController extends Controller
 {	
 	public function AddStudent(Request $request)
-	{	
+	{
 		$msg = array();
 		
 		$this->validate($request, [
@@ -28,8 +29,9 @@ class StudentController extends Controller
 		$password = $request->input('password');
 		$password_confirmation = $request->input('password_confirmation');
 		$question_set = $request->input('question_set');
+		$photo = $request->input('photo');
 		
-		if($this -> AddStudentFunc($name, $email, $student_id, $password, $exam_id, $question_set)){
+		if($this -> AddStudentFunc($name, $email, $student_id, $photo, $password, $exam_id, $question_set)){
 			$msg = ['Successful'];
 			return redirect('/admin/addstudent')->with(['msg' => $msg]);
 		}
@@ -39,7 +41,7 @@ class StudentController extends Controller
 		
 	}
 	
-	public function AddStudentFunc($name, $email, $student_id, $password, $exam_id, $question_set)
+	public function AddStudentFunc($name, $email, $student_id, $photo = null, $password, $exam_id, $question_set )
 	{
 		$user = User::firstOrCreate(['uid' => $student_id]);
 		
@@ -50,6 +52,7 @@ class StudentController extends Controller
 		$user->password = bcrypt($password);
 		$user->uid = $student_id;
 		$user->type = 'student';
+		$user->photo = $photo;
 		$user->save();
 		
 		$studentstatus->student_id = $student_id;
@@ -59,6 +62,18 @@ class StudentController extends Controller
 		$studentstatus->save();
 		
 		return true;
+	}
+	
+	public function AddMultiStudents($filename = 'students.xlsx'){
+		Excel::load(storage_path('/uploads/'.$filename), function($reader) {
+
+			$reader->each(function($sheet) {				
+				$this -> AddStudentFunc($sheet->name, $sheet->email, $sheet->uid, $sheet->photo, $sheet->password, $sheet->examid, $sheet->questionset );
+			});
+
+		});
+		
+		return 'Successful';
 	}
 	
 }

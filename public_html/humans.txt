@@ -1,0 +1,25 @@
+# humanstxt.org/
+# The humans responsible & technology colophon
+
+# TEAM : Infinity
+
+    Anupam Nath  -- Developer -- +91 986 453 4153 ( Guwahati, Assam, India )
+    Biraj Bora   -- Front-end -- +91 995 716 6604 ( Bokakhat, Assam, India )
+    Rahul Baruah -- Back-end  -- +91 995 427 6480 ( Guwahati, Assam, India )
+
+# THANKS
+
+    Dipankar Bharali -- IT Head ( E-gramin Services )
+
+# TECHNOLOGY COLOPHON
+
+    Front-end
+        HTML5Boilerplate
+        HTML5, CSS3, javascript
+        jQuery, Modernizr
+
+    Back-end
+        Laravel 5
+
+    Server & Hosting
+        Amazon Web Services

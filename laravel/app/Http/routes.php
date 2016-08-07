@@ -30,13 +30,13 @@ Route::get('/404', function(){
 	return view('desktop.404');
 });
 
-Route::get('/home', function(){
-	return view('desktop.home');
-});
+Route::get('/home', ['middleware' => 'sysCheckMiddleware', function(){
+	return view('desktop.login');
+}]);
 
-Route::get('/', function(){
-	return view('desktop.home');
-});
+Route::get('/', ['middleware' => 'sysCheckMiddleware', function(){
+	return view('desktop.login');
+}]);
 
 Route::get('/login', 'LoginController@ShowLogin');
 
@@ -44,7 +44,7 @@ Route::get('/logout', 'LoginController@DoLogout');
 
 Route::post('/login', 'LoginController@DoLogin');
 
-Route::get('/guidelines', 'ExamController@ShowGuidelines');
+Route::get('/instructions', 'ExamController@ShowGuidelines');
 
 Route::get('/questions', function(){
 	return view('desktop.questions');
@@ -57,6 +57,8 @@ Route::get('/update_answer', 'ExamController@UpdateAnswer');
 Route::get('/clear_answer', 'ExamController@ClearAnswer');
 
 Route::get('/mark_question', 'ExamController@MarkQuestion');
+
+Route::get('/unmark_question', 'ExamController@UnmarkQuestion');
 
 Route::get('/current_question', 'ExamController@CurrentQuestion');
 
@@ -94,17 +96,23 @@ Route::get('/admin/addquestion', function(){
 
 Route::post('/admin/addquestion', 'QuestionController@AddQuestion');
 
-Route::get('/excel', function(){
-	Excel::load('C:/OnlineExam/ischolar_registration.xls', function($reader) {
+Route::get('/excel', 'StudentController@AddMultiStudents');
 
-		$reader->each(function($sheet) {
+Route::post('/endexam', 'ExamController@EndExam');
 
-			// Loop through all rows
-			$sheet->each(function($row) {
-				dd($row);
-			});
-
-		});
-
-	});
+Route::get('/thankyou', function(){
+	return view('desktop.thankyou');
 });
+
+Route::post('/rating', 'LoginController@RateExam');
+
+Route::get('/closewindow', function(){
+	return ('The exam has ended. Please close the window.');
+});
+
+Route::get('/getphoto', 'LoginController@getStudentPhoto');
+
+Route::get('/howto', function(){
+	return view('desktop.howto');
+});
+

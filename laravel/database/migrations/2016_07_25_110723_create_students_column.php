@@ -16,6 +16,7 @@ class CreateStudentsColumn extends Migration {
 		{
 			$table->string('uid');
 			$table->string('type');
+			$table->text('photo');
 		});
 	}
 
@@ -26,7 +27,7 @@ class CreateStudentsColumn extends Migration {
 	 */
 	public function down()
 	{
-		$table->dropColumn(['uid', 'type', 'set']);
+		$table->dropColumn(['uid', 'type', 'photo']);
 	}
 
 }

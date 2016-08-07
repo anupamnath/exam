@@ -10,17 +10,22 @@ use App\Answers;
 
 class ExamController extends Controller
 {
+	public function __construct()
+    {
+        $this->middleware('auth');
+    }
+	
 	public function ShowGuidelines()
 	{
 		$user = Auth::user();
 		
 		$studentStatus = StudentStatus::where('student_id', $user->uid)->first();
 		if($studentStatus->end_exam){
-			return ('Sorry!. The exam has ended. <a href="/logout">Logout</a>');
+			return view('desktop.thankyou');
 		}
 		
-		$data = ['name' => $user->name, 'set' => $user->set];
-		return view('desktop.guidelines')->with($data);
+		$data = ['name' => $user->name, 'set' => $user->set, 'photo' => $user->photo];
+		return view('desktop.instructions')->with($data);
 	}
 	
 	public function FetchQuestionPaper()
@@ -36,12 +41,23 @@ class ExamController extends Controller
 		$time_remaining = $studentStatus->time_remaining;
 		$current_question = $studentStatus->current_question;
 		
+		if($current_question == 0){
+			$current_question = 1;
+		}
+		
 		$set = $studentStatus->set;
 		
 		$questions = DB::table($set)
+					->orderBy('question_no')
+					->take(60)
 					->get(['question_no', 'question', 'section', 'a', 'b', 'c', 'd']);
 		
+		/*----start array index from 1 instead of 0 to work with frontend--------*/
+		array_unshift($questions,""); 
+		unset($questions[0]);
+		/*------------//------------*/
 		foreach($questions as $key => $value){
+			
 			$question_col = 'q'.$value->question_no;
 			/*-------------------marked------------------*/
 			$markedQuery = Marked::where('student_id', $user->uid)
@@ -65,11 +81,13 @@ class ExamController extends Controller
 					$answered = $answeredQuery->$question_col;
 				}				
 			}
-			$questions[$key]->answered = $answered;		
+			$questions[$key]->answer = $answered;		
 			
 		}
 		
-		$data = ['duration' => $duration, 'time_remaining' => $time_remaining, 'current_question' => $current_question, 'set' => $set, 'questions' => $questions];
+		$no_of_questions = count($questions);
+		
+		$data = ['duration' => $duration, 'time_remaining' => $time_remaining, 'current_question' => $current_question, 'set' => $set, 'no_of_questions' => $no_of_questions,'questions' => $questions];
 		
 		return response()->json($data);
 	}
@@ -83,13 +101,20 @@ class ExamController extends Controller
 		$question_no = $request->input('question_no');
 		$answer = $request->input('answer');
 		
+		$this->UpdateAnswerFunc($question_no, $answer);
+				
+		return response()->json(true);
+	}
+	
+	public function UpdateAnswerFunc($question_no, $answer = null)
+	{		
 		$question_col = 'q'.$question_no;
 		
 		$answers = Answers::firstOrCreate(['student_id' => Auth::user()->uid]);				
 		$answers->$question_col = $answer;
 		$answers->save();
 				
-		return response()->json(true);
+		return true;
 	}
 	
 	public function ClearAnswer(Request $request)
@@ -119,6 +144,22 @@ class ExamController extends Controller
 		
 		$marked = Marked::firstOrCreate(['student_id' => Auth::user()->uid]);
 		$marked->$question_col = 1;
+		$marked->save();
+				
+		return response()->json(true);
+	}
+	
+	public function UnmarkQuestion(Request $request)
+	{
+		$this->validate($request, [
+			 'question_no' => 'required'
+		]);
+		
+		$question_no = $request->input('question_no');		
+		$question_col = 'q'.$question_no;
+		
+		$marked = Marked::firstOrCreate(['student_id' => Auth::user()->uid]);
+		$marked->$question_col = 0;
 		$marked->save();
 				
 		return response()->json(true);
@@ -154,11 +195,21 @@ class ExamController extends Controller
 		return response()->json(true);
 	}
 	
-	public function EndExam()
+	public function EndExam(Request $request)
 	{
 		$studentStatus = StudentStatus::where('student_id', Auth::user()->uid)->first();
 		$studentStatus->end_exam = 1;
 		$studentStatus->save();
+		
+		$answers = $request->input('answers');
+		
+		foreach($answers as $key=>$answer){
+			if ($key<=0) continue;
+			
+			if($answer!='false'){
+				$this->UpdateAnswerFunc($key, $answer);
+			}
+		}
 		
 		return response()->json(true);
 	}

@@ -147,6 +147,7 @@ return [
 		
 		/* more already here */
 		'Maatwebsite\Excel\ExcelServiceProvider',
+		'Jenssegers\Agent\AgentServiceProvider',
 
 	],
 
@@ -195,7 +196,8 @@ return [
 		'URL'       => 'Illuminate\Support\Facades\URL',
 		'Validator' => 'Illuminate\Support\Facades\Validator',
 		'View'      => 'Illuminate\Support\Facades\View',
-		'Excel' => 'Maatwebsite\Excel\Facades\Excel',
+		'Excel' 	=> 'Maatwebsite\Excel\Facades\Excel',
+		'Agent' 	=> 'Jenssegers\Agent\Facades\Agent',
 
 	],
 
